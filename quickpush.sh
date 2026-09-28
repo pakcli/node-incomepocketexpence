@@ -6,7 +6,7 @@
 # ============================================================
 CUSTOM_REPO_NAME=""
 COMMIT_MSG="Quick Push to Repo"
-GIT_EMAIL="12345678+fulan@users.noreply.github.com"
+GIT_EMAIL="276874584+pakcli@users.noreply.github.com"
 
 # ============================================================
 #  (jangan edit di bawah ini)
