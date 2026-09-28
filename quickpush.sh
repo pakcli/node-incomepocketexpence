@@ -5,7 +5,7 @@
 #  Jalanin langsung di folder project kamu.
 # ============================================================
 CUSTOM_REPO_NAME=""
-COMMIT_MSG="Quick Push to Repo"
+CUSTOM_COMMIT_MSG=""
 GIT_EMAIL="276874584+pakcli@users.noreply.github.com"
 
 # ============================================================
@@ -77,6 +77,12 @@ else
   ok "Authenticated as: $GH_USER"
 fi
 
+if [ -n "$CUSTOM_COMMIT_MSG" ]; then
+  COMMIT_MSG="$CUSTOM_COMMIT_MSG"
+else
+  COMMIT_MSG="Quick push to Create New Repo by ${GH_USER:-username}"
+fi
+
 # ── STEP 4 — init, commit, push ──────────────────────────────
 divider
 echo "  [4/5] Pushing to GitHub..."
@@ -132,6 +138,10 @@ if [ -z "$REMOTE_URL" ]; then
   fi
 else
   ok "Remote already set: $REMOTE_URL"
+  DETECTED_REPO=$(basename -s .git "$REMOTE_URL")
+  if [ -n "$DETECTED_REPO" ]; then
+    REPO_NAME="$DETECTED_REPO"
+  fi
 fi
 
 # Push
